@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            width: 320px;
+            font-family: 'Segoe UI', sans-serif;
+            background: #0f1117;
+            color: #e0e0e0;
+            padding: 16px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .header h2 {
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .badge {
+            font-size: 10px;
+            background: #6c63ff20;
+            color: #6c63ff;
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+
+        #status {
+            font-size: 13px;
+            color: #aaa;
+            margin-bottom: 14px;
+            min-height: 18px;
+        }
+
+        #status.error { color: #ef4444; }
+        #status.success { color: #10b981; }
+        #status.loading { color: #f59e0b; }
+
+        .preview-box {
+            background: #1e2130;
+            border: 1px solid #2a2d3e;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 14px;
+            display: none;
+        }
+
+        .preview-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .preview-row:last-child { margin-bottom: 0; }
+
+        .preview-label {
+            color: #aaa;
+            min-width: 60px;
+        }
+
+        .preview-value {
+            color: #fff;
+            text-align: right;
+            max-width: 200px;
+            word-break: break-word;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        #extractBtn {
+            background: #6c63ff;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        #extractBtn:hover { background: #574fd6; }
+        #extractBtn:disabled { background: #3a3d4e; cursor: not-allowed; }
+
+        #saveBtn {
+            background: #10b981;
+            color: white;
+            display: none;
+        }
+
+        #saveBtn:hover { background: #059669; }
+
+        .method-select {
+            width: 100%;
+            background: #1e2130;
+            border: 1px solid #2a2d3e;
+            border-radius: 8px;
+            padding: 8px 12px;
+            color: #fff;
+            font-size: 13px;
+            margin-bottom: 8px;
+            display: none;
+            outline: none;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 11px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h2>🎯 Job Tracker</h2>
+    <span class="badge">AI Powered</span>
+</div>
+
+<div id="status">Click extract to read this page</div>
+
+<div class="preview-box" id="preview">
+    <div class="preview-row">
+        <span class="preview-label">Company</span>
+        <span class="preview-value" id="p-company">-</span>
+    </div>
+    <div class="preview-row">
+        <span class="preview-label">Role</span>
+        <span class="preview-value" id="p-role">-</span>
+    </div>
+    <div class="preview-row">
+        <span class="preview-label">Contact</span>
+        <span class="preview-value" id="p-contact">-</span>
+    </div>
+    <div class="preview-row">
+        <span class="preview-label">Notes</span>
+        <span class="preview-value" id="p-notes">-</span>
+    </div>
+    <div class="preview-row">
+    <span class="preview-label">Source</span>
+    <span class="preview-value" id="p-url" style="font-size:11px; color:#6c63ff;">-</span>
+</div>
+</div>
+
+<select class="method-select" id="methodSelect">
+    <option>LinkedIn</option>
+    <option>Website</option>
+    <option>Email</option>
+    <option>WhatsApp</option>
+    <option>Other</option>
+</select>
+
+<button id="extractBtn">⚡ Extract Job Details</button>
+<button id="saveBtn">💾 Save to Tracker</button>
+
+<div class="footer">Saves to localhost/job-tracker</div>
+
+<script src="popup.js"></script>
+</body>
+</html>
